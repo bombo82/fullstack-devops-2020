@@ -21,6 +21,7 @@
 | Marco Alessandra | marcolssndr |   |
 | De Bartolo Andrea | Debag-software |  |
 | Francesca Consorti | francescaconsorti |  |
+| Francesco Farfan | frankfarfan96 | in team con Josue Condori |
 | Agnese Morici | AgneseMorici | |
 | Adam El Baz | adam11jpg | in team con Andrea De Bartolo |
 | Luca Reverberi | lukeku62 | in gruppo con Francesca Consorti | 
