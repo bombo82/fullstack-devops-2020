@@ -16,3 +16,4 @@
 | Marco Alessandra | marcolssndr |   |
 | De Bartolo Andrea | Debag-software |  |
 | Francesca Consorti | francescaconsorti |  |
+| Francesco Farfan | frankfarfan96 | in team con Josue Condori |
