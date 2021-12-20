@@ -4,6 +4,14 @@
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
 | Matteo Bellia | belliamatteo | in team con Marco Alessandra |
+| Giada Altieri  | Giadaaltieri13 |
+| Federico Micca | FedericoMich |  andreatulliani |
+| Alessandro Sirianni | SkyPhoenix01 | notes |
+| Andrea Biondo | Andrea-crypto-svg | working with Lupo Luca |
+| Luca Agostoni | Luca-Agostoni | my github |
+| Alessandro Cappiello | alek1926 | in team con Claudio Lombardi |
+| Claudio Lombardi | cloudlombard | student |
+| Gabriele Silipigni | gabrysili | |
 | Daniele Pinardi | DanielePinardi | attualmente svolgo gli esercizi in singolo |
 | Mark Fabros| markfabros | - |
 | Kevin Galasso | kevin-galasso01 |
@@ -13,3 +21,6 @@
 | Marco Alessandra | marcolssndr |   |
 | De Bartolo Andrea | Debag-software |  |
 | Francesca Consorti | francescaconsorti |  |
+| Agnese Morici | AgneseMorici | |
+| Adam El Baz | adam11jpg | in team con Andrea De Bartolo |
+| Luca Reverberi | lukeku62 | in gruppo con Francesca Consorti | 
