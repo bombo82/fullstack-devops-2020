@@ -3,6 +3,7 @@
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
+| Gabriele Silipigni | gabrysili | |
 | Matteo Bellia | belliamatteo | //// |
 | Daniele Pinardi | DanielePinardi | attualmente svolgo gli esercizi in singolo |
 | Mark Fabros| markfabros | - |
