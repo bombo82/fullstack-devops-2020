@@ -3,6 +3,7 @@
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
+| Mark Fabros| markfabros | - |
 | Kevin Galasso | kevin-galasso01 |
 | Jacopo Giola | JacopoGiola99 | student |
 | Andrea Tulliani | andreatulliani | Federico |
