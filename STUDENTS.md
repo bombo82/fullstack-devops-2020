@@ -16,3 +16,4 @@
 | Marco Alessandra | marcolssndr |   |
 | De Bartolo Andrea | Debag-software |  |
 | Francesca Consorti | francescaconsorti |  |
+| Agnese Morici | AgneseMorici | |
