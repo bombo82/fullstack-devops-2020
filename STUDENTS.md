@@ -2,4 +2,4 @@
 
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
-| Federico Micca | FedericoMich |  student |
+| Federico Micca | FedericoMich |  andreatulliani |
