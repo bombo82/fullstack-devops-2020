@@ -3,6 +3,7 @@
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
+| Federico Micca | FedericoMich |  andreatulliani |
 | Alessandro Sirianni | SkyPhoenix01 | notes |
 | Andrea Biondo | Andrea-crypto-svg | working with Lupo Luca |
 | Luca Agostoni | Luca-Agostoni | my github |
