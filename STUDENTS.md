@@ -3,6 +3,7 @@
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
+| Matteo Bellia | belliamatteo | in team con Marco Alessandra |
 | Giada Altieri  | Giadaaltieri13 |
 | Federico Micca | FedericoMich |  andreatulliani |
 | Alessandro Sirianni | SkyPhoenix01 | notes |
@@ -11,7 +12,6 @@
 | Alessandro Cappiello | alek1926 | in team con Claudio Lombardi |
 | Claudio Lombardi | cloudlombard | student |
 | Gabriele Silipigni | gabrysili | |
-| Matteo Bellia | belliamatteo | //// |
 | Daniele Pinardi | DanielePinardi | attualmente svolgo gli esercizi in singolo |
 | Mark Fabros| markfabros | - |
 | Kevin Galasso | kevin-galasso01 |
