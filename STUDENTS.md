@@ -3,6 +3,7 @@
 | Full Name | GitHub nickname | notes |
 | --------- | --------------- | ----- |
 | Gianni Bombelli | bombo82 |  teacher |
+| Alessandro Cappiello | alek1926 | in team con Claudio Lombardi |
 | Claudio Lombardi | cloudlombard | student |
 | Gabriele Silipigni | gabrysili | |
 | Matteo Bellia | belliamatteo | //// |
