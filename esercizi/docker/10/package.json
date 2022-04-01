@@ -1,0 +1,19 @@
+{
+    "name": "greetings",
+    "version": "0.0.1",
+    "description": "This small application just say hello.",
+    "keywords": [],
+    "homepage": "",
+    "license": "GPL-3.0",
+    "author": {
+      "name": "Gianni Bombelli (bombo82)",
+      "email": "gianni@giannibombelli.it"
+    },
+    "main": "server.js",
+     "scripts": {
+      "serve": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.0.0"
+    }
+  }
