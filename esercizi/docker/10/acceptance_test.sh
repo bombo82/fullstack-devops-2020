@@ -25,7 +25,7 @@ should_up_script_run_node_and_serve_server_js() {
     local readonly DESCRIPTION='should "up.sh" script run node service and serve "server.js"'
     local readonly CONTAINER_ID=`(./up.sh)`
     sleep 5
-    local readonly ACTUAL=$(curl -s http://192.168.50.95:88)
+    local readonly ACTUAL=$(curl -s http://192.168.50.95:8080)
     assertRegExpMatch "$ACTUAL" "^hello from [A-Za-z0-9]{12}$"
     $((docker container stop $CONTAINER_ID) >/dev/null)
 }
@@ -35,7 +35,7 @@ should_up_script_run_node_and_serve_server_js_with_external_parameter() {
     local readonly CONTAINER_ID=`(./up.sh Gianni)`
     local readonly EXPECTED="hello from Gianni"
     sleep 5
-    local readonly ACTUAL=$(curl -s http://192.168.50.95:88)
+    local readonly ACTUAL=$(curl -s http://192.168.50.95:8080)
     assertEquals "$ACTUAL" "$EXPECTED"
     $((docker container stop $CONTAINER_ID) >/dev/null)
 }
@@ -45,7 +45,7 @@ should_fail_to_execute_the_external_command() {
     local readonly CONTAINER_ID=`(./up.sh "echo ciao mondo")`
     local readonly EXPECTED="hello from echo ciao mondo"
     sleep 5
-    local readonly ACTUAL=$(curl -s http://192.168.50.95:88)
+    local readonly ACTUAL=$(curl -s http://192.168.50.95:8080)
     assertEquals "$ACTUAL" "$EXPECTED"
     $((docker container stop $CONTAINER_ID) >/dev/null)
 }

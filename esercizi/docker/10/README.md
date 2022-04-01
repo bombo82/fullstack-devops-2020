@@ -12,7 +12,7 @@ Definire un'immagine Docker tramite ```Dockerfile``` che soddisfa i seguenti req
 - sia esposta la porta 3000
 - sia presente uno script bash che:
   - avvia il container in modalità _detach_
-  - mappa la porta 3000 (interna) sulla porta 88 (esterna)
+  - mappa la porta 3000 (interna) sulla porta 8080 (esterna)
 - il nome dell'immagine sia ```serve-js-page-using-node```
 
 ## Test di Accettazione

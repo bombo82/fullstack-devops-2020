@@ -35,7 +35,7 @@ should_up_script_run_nginx_and_serve_index_html() {
 </body>
 </html>"
     sleep 5
-    local readonly ACTUAL=$(curl -s http://192.168.50.95:88)
+    local readonly ACTUAL=$(curl -s http://192.168.50.95:8080)
     assertEquals "$ACTUAL" "$EXPECTED"
     $((docker container stop $CONTAINER_ID) >/dev/null)
 }

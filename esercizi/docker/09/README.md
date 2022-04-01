@@ -1,5 +1,5 @@
 # Esercizio 09
-Quando viene eseguito questo container, esso esegue il web server _nginx_ e serve una pagina HTML statica. La pagina HTML viene resa disponibile all'indirizzo ```http://192.168.50.95:88```.
+Quando viene eseguito questo container, esso esegue il web server _nginx_ e serve una pagina HTML statica. La pagina HTML viene resa disponibile all'indirizzo ```http://192.168.50.95:8080```.
 
 Questa semplice applicazione stampa a video la scritta ```Hello from <message>``` dove message è una stringa fornita dall'esterno, se il message non viene passato dall'esterno viene utilizzato _hostname_ come message.
 Se viene passato un comando esterno, esso viene interpretato come se fosse il parametro dell'applicazione, quindi il messaggio da visualizzare.
@@ -12,7 +12,7 @@ Definire un'immagine Docker tramite ```Dockerfile``` che soddisfa i seguenti req
 - sia esposta la porta 80
 - sia presente uno script bash che:
   - avvia il container in modalità _detach_
-  - mappa la porta 80 (interna) sulla porta 88 (esterna)
+  - mappa la porta 80 (interna) sulla porta 8080 (esterna)
 - il nome dell'immagine sia ```serve-html-page-using-nginx```
 
 > NOTA: alcuni dei punti sopra sono già garantiti dalla versione alpine dell'immagine di [nginx](https://hub.docker.com/_/nginx). Potete utilizzare tale immagine come base di questo esercizio!
