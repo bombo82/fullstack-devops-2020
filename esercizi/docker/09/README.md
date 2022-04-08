@@ -1,9 +1,6 @@
 # Esercizio 09
 Quando viene eseguito questo container, esso esegue il web server _nginx_ e serve una pagina HTML statica. La pagina HTML viene resa disponibile all'indirizzo ```http://192.168.50.95:8080```.
 
-Questa semplice applicazione stampa a video la scritta ```Hello from <message>``` dove message è una stringa fornita dall'esterno, se il message non viene passato dall'esterno viene utilizzato _hostname_ come message.
-Se viene passato un comando esterno, esso viene interpretato come se fosse il parametro dell'applicazione, quindi il messaggio da visualizzare.
-
 ## Requisiti
 Definire un'immagine Docker tramite ```Dockerfile``` che soddisfa i seguenti requisiti:
 - sia derivata da Alpine Linux
