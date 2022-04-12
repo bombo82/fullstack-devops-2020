@@ -1,0 +1,39 @@
+packetbeat.interfaces.device: any
+
+packetbeat.flows:
+  timeout: 30s
+  period: 10s
+
+packetbeat.protocols:
+  - type: http
+    ports: [80]
+    send_headers: true
+    send_all_headers: true
+
+processors:
+  - include_fields:
+      fields: ["cpu"]
+  - drop_fields:
+      fields: ["cpu.user", "cpu.system"]
+  - drop_event:
+      when:
+        equals:
+          http.code: 200
+  - add_cloud_metadata: ~
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+  - add_locale:
+      format: offset
+
+output.elasticsearch:
+  hosts: "elasticsearch:9200"
+
+setup.dashboards:
+  enabled: true
+
+setup.kibana:
+  host: "kibana:5601"
+
+xpack.monitoring:
+  enabled: true
+  elasticsearch:

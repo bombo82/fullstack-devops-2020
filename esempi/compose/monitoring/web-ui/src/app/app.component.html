@@ -1,0 +1,29 @@
+<div style="padding: 16px">
+  <h3>Add new quote:</h3>
+  <form (ngSubmit)="onSubmit()" #quoteForm="ngForm">
+    <div>
+    <textarea required [(ngModel)]="model.text" name="quote" rows="4" cols="80"
+              placeholder="We are Motörhead. And we play rock and roll."></textarea>
+    </div>
+    <div>
+      <input required [(ngModel)]="model.author" name="author"
+             placeholder="Lemmy Kilmister">
+
+      <button type="submit" class="btn btn-success"
+              [disabled]="!quoteForm.form.valid">Submit
+      </button>
+      <button type="button" class="btn btn-default"
+              (click)="newQuote(); quoteForm.reset()">New Quote
+      </button>
+    </div>
+  </form>
+
+</div>
+
+<div style="padding: 16px">
+  <h3>Quotes list</h3>
+  <div style="padding: 16px 32px" *ngFor="let quote of quotes">
+    <div>{{ quote.text }}</div>
+    <div> --- {{ quote.author }}</div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: false
+
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+processors:
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_locale:
+      format: offset
+  - add_host_metadata:
+      netinfo.enabled: true
+
+output.elasticsearch:
+  hosts: "elasticsearch:9200"
+
+setup.dashboards:
+  enabled: true
+
+setup.kibana:
+  host: "kibana:5601"
+
+xpack.monitoring:
+  enabled: true
+  elasticsearch:
