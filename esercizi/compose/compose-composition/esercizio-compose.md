@@ -12,5 +12,3 @@ NOTE: gli url relativi alla applicazione:
 - http://redis-commander.vagrantbox.local/ -> client web redis
 - http://vagrantbox.local/quotes/ -> quote-service
 - http://vagrantbox.local/evaluations/ -> like-service
-
-- http://vagrantbox.local/ -> web UI
