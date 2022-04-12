@@ -1,0 +1,12 @@
+services:
+	swagger-ui:
+    image: swaggerapi/swagger-ui
+    restart: on-failure
+    volumes:
+      - ./conf/api.yaml:/usr/share/nginx/html/swagger/api.yaml:ro
+    environment:
+      API_URL: swagger/api.yaml
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.swagger-ui.rule=Host(`swagger-ui.vagrantbox.local`)"
+      - "traefik.http.services.swagger-ui.loadbalancer.server.port=8080"
