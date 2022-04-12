@@ -10,7 +10,7 @@ L'applicazione è un gestore di "citazioni" (quotes in inglese), che ci permette
 L'architettura utilizzata è a micro-servizi e sono identificati i seguenti componenti:
 - quote-service
 - like-service
-- web-ui
+- web-ui (non implementata)
 - mongo (database usato da quote-service)
 - redis (database usato da like-service)
 
@@ -36,7 +36,7 @@ Sotto lo schema dei servizi necessari e le interazioni interne ed esterne:
 Per lavorare in locale allo sviluppo del frontend e per verificare le integrazioni tra i micro-servizi è necessario:
 - quote-service accessibile via web
 - like-service accessibile via web
-- web-ui accessibile via web -- non è necessaria, ma potremmo inserirla per completezza
+- web-ui accessibile via web -- non è necessaria e nanche implementata, ci concentriamo sulla parte backend
 - mongo
 - redis
 - mongo-express (db ui) accessibile via web
@@ -57,7 +57,6 @@ Inoltre, è necessario documentare il comando da lanciare per avviare ogni caso 
 
 ## Indirizzi dei servizi
 Questi sono i link per accedere ai servizi esposti dall'applicazione all'utente finale:
-- http://vagrantbox.local/ -> web UI
 - http://vagrantbox.local/quotes/ -> quote-service
 - http://vagrantbox.local/evaluations/ -> like-service
 

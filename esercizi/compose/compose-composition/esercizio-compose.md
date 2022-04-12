@@ -2,7 +2,7 @@ Punti esercizio:
 1. scomporre docker-file.yml in 3 file separati:
   - docker-compose-local.yml (database che espongono la porta; non contiene quote-service e like-service)
   - docker-compose-test.yml (database non espongono la porta; contiene quote-service e like-service)
-  - docker-compose-prod.yml (database non espongono la porta; contiene quote-service, like-service, web-ui; non contiene client UI dei database)
+  - docker-compose-prod.yml (database non espongono la porta; contiene quote-service, like-service; non contiene client UI dei database)
 
 2. ???
 
