@@ -1,0 +1,70 @@
+version: '3'
+services:
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.11.2
+    restart: on-failure
+    command: ["--strict.perms=false"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers/:/var/lib/docker/containers/:ro
+      - ./conf/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
+    user: root
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:7.11.2
+    restart: on-failure
+    command: ["--strict.perms=false"]
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./conf/metricbeat.docker.yml:/usr/share/metricbeat/metricbeat.yml:ro
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+
+  packetbeat:
+    image: docker.elastic.co/beats/packetbeat:7.11.2
+    restart: on-failure
+    command: ["--strict.perms=false"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./conf/packetbeat.docker.yml:/usr/share/packetbeat/packetbeat.yml:ro
+    user: root
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+
+  logstash:
+    image: logstash:7.11.1
+    restart: on-failure
+    command: 'logstash -e "input { udp { port => 5000 } } output { elasticsearch { hosts => elasticsearch } }"'
+    environment:
+      - STDOUT=true
+    depends_on:
+      - elasticsearch
+      - kibana
+
+  kibana:
+    image: kibana:7.11.1
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kibana.rule=Host(`kibana.vagrantbox.local`)"
+      - "traefik.http.services.kibana.loadbalancer.server.port=5601"
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    image: elasticsearch:7.11.1
+    restart: on-failure
+    environment:
+      - discovery.type=single-node

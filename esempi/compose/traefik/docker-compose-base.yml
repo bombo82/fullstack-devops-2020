@@ -1,0 +1,31 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: traefik
+    command: --api.insecure=true --providers.docker --providers.docker.exposedByDefault=false
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    command: --appendonly yes
+    volumes:
+      - redis_volume:/data
+
+  mongo:
+    image: mongo
+    restart: on-failure
+    volumes:
+      - mongo_volume:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+volumes:
+  mongo_volume:
+  redis_volume:

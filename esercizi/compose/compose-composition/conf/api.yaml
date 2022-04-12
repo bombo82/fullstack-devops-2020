@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: My Quote App
+  description: This document describes the REST API that a user should use to interact with My Quote App.
+  version: 1.0.0
+servers:
+  - url: http://vagrantbox.local/
+paths:
+  /quotes/:
+    get:
+      responses:
+        200:
+          description: List all quotes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuoteWithId'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Quote'
+        required: true
+      responses:
+        201:
+          description: Create a quote
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/QuoteWithId'
+  /quotes/{quoteId}:
+    parameters:
+      - in: path
+        name: quoteId
+        schema:
+          type: string
+        required: true
+    get:
+      responses:
+        200:
+          description: Show a quote with quoteId
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/QuoteWithId'
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Quote'
+        required: true
+      responses:
+        200:
+          description: Update a quote with quoteId
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/QuoteWithId'
+    delete:
+      responses:
+        200:
+          description: Delete a quote with quoteId
+  /evaluations/{quoteId}/like:
+    parameters:
+      - in: path
+        name: quoteId
+        schema:
+          type: string
+        required: true
+    post:
+      responses:
+        200:
+          description: Like a quote with quoteId
+  /evaluations/{quoteId}/dislike:
+    parameters:
+      - in: path
+        name: quoteId
+        schema:
+          type: string
+        required: true
+    post:
+      responses:
+        200:
+          description: Dislike a quote with quoteId
+  /evaluations/{quoteId}:
+    parameters:
+      - in: path
+        name: quoteId
+        schema:
+          type: string
+        required: true
+    get:
+      responses:
+        200:
+          description: Show a evaluation with quoteId
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Evaluation'
+
+components:
+  schemas:
+    Quote:
+      properties:
+        text:
+          type: string
+          example: "Se il presidente non è contento della squadra o chiede all'allenatore di cambiare qualcosa o cambia l'allenatore."
+        author:
+          type: string
+          example: "Diego Lopez"
+    QuoteWithId:
+      properties:
+        text:
+          type: string
+          example: "Se il presidente non è contento della squadra o chiede all'allenatore di cambiare qualcosa o cambia l'allenatore."
+        author:
+          type: string
+          example: "Diego Lopez"
+        id:
+          type: string
+          example: "46b2236c-e1d8-45f5-aad1-6886980fd552"
+    Evaluation:
+      properties:
+        like:
+          type: number
+        dislike:
+          type: number
+        total:
+          type: number

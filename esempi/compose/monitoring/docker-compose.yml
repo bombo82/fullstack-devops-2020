@@ -1,0 +1,91 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: traefik
+    command: --api.insecure=true --providers.docker --providers.docker.exposedByDefault=false
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    command: --appendonly yes
+    volumes:
+      - redis_volume:/data
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    restart: on-failure
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.redis-commander.rule=Host(`redis-commander.vagrantbox.local`)"
+    depends_on:
+      - redis
+
+  mongo:
+    image: mongo
+    restart: on-failure
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./conf/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongo_volume:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+      - MONGO_INITDB_DATABASE=admin
+
+  mongo-express:
+    image: mongo-express
+    restart: on-failure
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=example
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mongo-express.rule=Host(`mongo-express.vagrantbox.local`)"
+    depends_on:
+      - mongo
+
+  quote-service:
+    build: quote-service
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.quote-service.rule=Host(`vagrantbox.local`) && PathPrefix(`/quotes/`)"
+      - "traefik.http.middlewares.quote-service-strip.stripprefix.prefixes=/quotes"
+      - "traefik.http.services.quote-service.loadbalancer.server.port=3000"
+      - "traefik.http.routers.quote-service.middlewares=quote-service-strip"
+    depends_on:
+      - mongo
+
+  like-service:
+    build: like-service
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.like-service.rule=Host(`vagrantbox.local`) && PathPrefix(`/evaluations/`)"
+      - "traefik.http.middlewares.like-service-strip.stripprefix.prefixes=/evaluations"
+      - "traefik.http.services.like-service.loadbalancer.server.port=3000"
+      - "traefik.http.routers.like-service.middlewares=like-service-strip"
+    depends_on:
+      - redis
+
+  web-ui:
+    build: web-ui
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web-ui.rule=Host(`vagrantbox.local`)"
+
+volumes:
+  mongo_volume:
+  redis_volume:
