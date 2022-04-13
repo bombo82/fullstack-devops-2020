@@ -79,13 +79,6 @@ services:
     depends_on:
       - redis
 
-  web-ui:
-    build: web-ui
-    restart: on-failure
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.web-ui.rule=Host(`vagrantbox.local`)"
-
 volumes:
   mongo_volume:
   redis_volume:
