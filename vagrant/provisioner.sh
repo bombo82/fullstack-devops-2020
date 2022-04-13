@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 readonly USER_NAME="Gianni Bombelli (bombo82)"
-readonly USER_EMAIL="gianni@giannibombelli.it"
+readonly USER_EMAIL="bombo82@giannibombelli.it"
 
 install_and_configure_git() {
     echo "### Install and configure git"
