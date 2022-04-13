@@ -6,5 +6,6 @@ RUN npm set progress=false && \
     npm install --only=production && \
     npm cache clean --force
 COPY . /app
+ENV NODE_ENV=production
 ENTRYPOINT ["node", "src/server.js"]
 EXPOSE 3000
