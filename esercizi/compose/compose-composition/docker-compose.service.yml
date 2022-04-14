@@ -1,0 +1,25 @@
+version: '3'
+services:
+  quote-service:
+    build: quote-service
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.quote-service.rule=Host(`vagrantbox.local`) && PathPrefix(`/quotes/`)"
+      - "traefik.http.middlewares.quote-service-strip.stripprefix.prefixes=/quotes"
+      - "traefik.http.services.quote-service.loadbalancer.server.port=3000"
+      - "traefik.http.routers.quote-service.middlewares=quote-service-strip"
+    depends_on:
+      - mongo
+
+  like-service:
+    build: like-service
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.like-service.rule=Host(`vagrantbox.local`) && PathPrefix(`/evaluations/`)"
+      - "traefik.http.middlewares.like-service-strip.stripprefix.prefixes=/evaluations"
+      - "traefik.http.services.like-service.loadbalancer.server.port=3000"
+      - "traefik.http.routers.like-service.middlewares=like-service-strip"
+    depends_on:
+      - redis

@@ -1,0 +1,7 @@
+usare in sviluppo locale i file:
+- docker-compose.porte.yml
+- docker-compose.infrastruttura.yml
+
+usare su server di dev / test i file:
+- docker-compose.infrastruttura.yml
+- docker-compose.servizi.yml
