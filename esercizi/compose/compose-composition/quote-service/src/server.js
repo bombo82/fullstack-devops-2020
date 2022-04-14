@@ -5,7 +5,8 @@ const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const app = express()
 
-const connectionString = 'mongodb://app-user:app-user-password@localhost:27017/?authSource=admin'
+const config = require('../env.json')[process.env.NODE_ENV || 'development'];
+const connectionString = `mongodb://app-user:app-user-password@${config.MONGO_SERVER}:27017/?authSource=admin`
 
 const manageError = (error, res) => {
   console.error(error)

@@ -9,8 +9,9 @@ const manageError = (error, res) => {
   res.status(500).send(error)
 }
 
+const config = require('../env.json')[process.env.NODE_ENV || 'development'];
 const redisClient = redis.createClient({
-  host: 'localhost',
+  host: config.REDIS_SERVER,
   port: 6379
 })
 

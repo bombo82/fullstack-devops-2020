@@ -1,4 +1,4 @@
-# Tech Talent Factory - DevOps Class 2019
+# Tech Talent Factory - DevOps Class 2020
 
 This is the "archetype repository" for the students of Tech Talent Factory - DevOps Class 2020.
 
