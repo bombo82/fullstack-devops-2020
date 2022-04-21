@@ -1,0 +1,31 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: traefik
+    command: --api.insecure=true --providers.docker --providers.docker.exposedByDefault=false
+    restart: "no"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  rgb2hex:
+    build: rgb2hex
+    restart: "no"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rgb2hex.rule=PathPrefix(`/rgb2hex`)"
+      - "traefik.http.routers.rgb2hex.middlewares=rgb2hex-stripprefix"
+      - "traefik.http.services.rgb2hex.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.rgb2hex-stripprefix.stripprefix.prefixes=/rgb2hex"
+
+#  <microservice-example-name>:
+#    build: <microservice-example-name>
+#    restart: "no"
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.<microservice-example-name>.rule=PathPrefix(`/<microservice-example-name>`)"
+#      - "traefik.http.routers.<microservice-example-name>.middlewares=<microservice-example-name>-stripprefix"
+#      - "traefik.http.services.<microservice-example-name>.loadbalancer.server.port=3000"
+#      - "traefik.http.middlewares.<microservice-example-name>-stripprefix.stripprefix.prefixes=/<microservice-example-name>"
