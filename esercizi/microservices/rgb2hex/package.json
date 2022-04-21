@@ -22,6 +22,7 @@
     "lint": "eslint src/** --ext .js,.ts",
     "test:unit": "ts-mocha ./src/**/*.test.ts --reporter mocha-jenkins-reporter --reporter-options junit_report_path=./test-report/test-post-deploy-report.xml",
     "test:component": "ts-mocha ./src/**/*.componentTest.ts --reporter mocha-jenkins-reporter --reporter-options junit_report_path=./test-report/test-pre-deploy-report.xml",
+    "test:e2e": "npm_config_rgb2hex_test_url=http://localhost/rgb2hex ts-mocha ./src/**/*.componentTest.ts --reporter mocha-jenkins-reporter --reporter-options junit_report_path=./test-report/test-pre-deploy-report.xml",
     "start": "ts-node src/HttpServer.ts",
     "serve": "node $npm_package_main",
     "prebuild": "npm run-script clean",
