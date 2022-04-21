@@ -10,7 +10,7 @@
     "email": "bombo82@giannibombelli.it"
   },
   "contributors": [],
-  "main": "dist/microservice-template/src/HttpServer.js",
+  "main": "dist/rgb2hex/src/HttpServer.js",
   "repository": {
     "type": "git",
     "url": ""
